@@ -1,0 +1,56 @@
+Status: FAILED
+Time Taken: 28
+Size: 637
+Timestamp: Thu Oct 08 11:09:36 IST 2020
+TestStep: Call Login
+
+----------------- Messages ------------------------------
+[Not SOAP Fault] Response is a SOAP Fault
+
+----------------- Properties ------------------------------
+Endpoint: http://localhost:8088/mockShoppingService
+Encoding: UTF-8
+
+---------------- Request ---------------------------
+Request Headers: SOAPAction : "http://expertz.me/service/eCommerce/ShoppingService/1.0/login"
+Connection : Keep-Alive
+User-Agent : Apache-HttpClient/4.1.1 (java 1.5)
+Host : localhost:8088
+Accept-Encoding : gzip,deflate
+Content-Length : 354
+Content-Type : text/xml;charset=UTF-8
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://expertz.me/data/eCommerce/ShoppingService/1.0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:loginRequest>
+         <ns:username>Rohit</ns:username>
+         <ns:password>welcome1</ns:password>
+      </ns:loginRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+---------------- Response --------------------------
+Response Headers: Server : Jetty(6.1.26)
+Content-Encoding : gzip
+#status# : HTTP/1.1 200 OK
+Content-Length : 344
+Content-Type : text/xml; charset=utf-8
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://expertz.me/data/eCommerce/ShoppingService/1.0">
+   <soapenv:Body>
+      <soapenv:Fault>
+         <faultcode>APP001</faultcode>
+         <faultstring xml:lang="en-US">Already Logged In</faultstring>
+         <!--Optional:-->
+         <faultactor>Auth System</faultactor>
+         <!--Optional:-->
+         <detail>
+            <ns:faultMessage>User is already logged in. If you want to login as another user logout first</ns:faultMessage>
+            <!--You may enter ANY elements at this point-->
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,57 @@
+Status: FAILED
+Time Taken: 50
+Size: 584
+Timestamp: Thu Oct 08 10:40:10 IST 2020
+TestStep: Call Purchase
+
+----------------- Messages ------------------------------
+[Schema Compliance] Element 'detail' with element-only content type cannot have text content.
+[Not SOAP Fault] Response is a SOAP Fault
+
+----------------- Properties ------------------------------
+Endpoint: http://localhost:8088/mockShoppingService
+Encoding: UTF-8
+
+---------------- Request ---------------------------
+Request Headers: SOAPAction : "http://expertz.me/service/eCommerce/ShoppingService/1.0/purchase"
+Connection : Keep-Alive
+User-Agent : Apache-HttpClient/4.1.1 (java 1.5)
+Host : localhost:8088
+Accept-Encoding : gzip,deflate
+Content-Length : 374
+Content-Type : text/xml;charset=UTF-8
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://expertz.me/data/eCommerce/ShoppingService/1.0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:purchaseRequest>
+         <ns:sessionId>03552662279904861</ns:sessionId>
+         <ns:purchaseItem/>
+      </ns:purchaseRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+---------------- Response --------------------------
+Response Headers: Server : Jetty(6.1.26)
+Content-Encoding : gzip
+#status# : HTTP/1.1 200 OK
+Content-Length : 327
+Content-Type : text/xml; charset=utf-8
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <soapenv:Fault>
+         <faultcode>APP011</faultcode>
+         <faultstring xml:lang="en-US">Invalid Item</faultstring>
+         <!--Optional:-->
+         <faultactor>Purchase System</faultactor>
+         <!--Optional:-->
+         <detail>
+            In the demo we do not support bulk buys or add to cart kind of operations. We could not find any items with the given name!!!
+            <!--You may enter ANY elements at this point-->
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
